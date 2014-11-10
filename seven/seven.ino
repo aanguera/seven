@@ -20,7 +20,7 @@ int seg_f = 7;
 int seg_g = 8;
 
 const char segmentPins[7] = { seg_a,seg_b,seg_c,seg_d,seg_e,seg_f,seg_g};
-//prova
+
 const byte numLeds[3] = {
   //DP GFEDCBA  Ordre dels segments
   B00111111,  // Representa el 0
