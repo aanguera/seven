@@ -46,7 +46,7 @@ void loop() {
   
   boolean isBitSet;          // Assigna 1 o 0 a cada segment del seven segment
   
-/*  digitalWrite(seg_a, HIGH);
+  digitalWrite(seg_a, HIGH);
   delay(1000);
   digitalWrite(seg_a, LOW);
   digitalWrite(seg_b, HIGH);
@@ -68,7 +68,7 @@ void loop() {
   delay(1000);
   digitalWrite(seg_g, LOW);
   delay(1000);
- */ 
+ 
   // representa el 0
   for(int segment = 0; segment < 7; segment++)
   {
