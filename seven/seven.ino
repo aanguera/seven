@@ -45,7 +45,7 @@ void setup() {
 void loop() {
   
   boolean isBitSet;          // Assigna 1 o 0 a cada segment del seven segment
-  
+/*  
   digitalWrite(seg_a, HIGH);
   delay(1000);
   digitalWrite(seg_a, LOW);
@@ -68,17 +68,20 @@ void loop() {
   delay(1000);
   digitalWrite(seg_g, LOW);
   delay(1000);
- 
+*/ 
   // representa el 0
-  for(int segment = 0; segment < 7; segment++)
+  for(int numero = 0; numero < 3; numero++)
   {
-    isBitSet = bitRead(numLeds[2], segment);
+    for(int segment = 0; segment < 7; segment++)
+    {
+    isBitSet = bitRead(numLeds[numero], segment);
     digitalWrite( segmentPins[segment], isBitSet); 
-    delay(600);
-  }
-  shutDown();
+   // delay(600);
+    }
   delay(1000);
-
+  shutDown();
+  //delay(1000);
+  }
 
 }
   //Aquesta funcio apaga tots elssegments
