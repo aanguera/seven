@@ -1,7 +1,8 @@
 /*************************************************************************************
 **                                                                                  **
-**             Aquest programa fa una lectura analgica del canal A0                 **
-**             modula la intensitat del led amb PWM de la sortida 3                 **
+**             Aquest programa fa un test del display seven segment                 **
+**             primer engega i apaga cadascun dels segments i despres               **
+**             presenta els numeros del 0 al 9.                                     **
 **                                                                                  **
 *************************************************************************************/
  
@@ -10,6 +11,8 @@
 
 
 //******  Variables  *****************************************************************
+
+const char ledOn = HIGH;
 
 int seg_a = 1;
 int seg_b = 2;
@@ -81,13 +84,11 @@ void loop() {
   {
     for(int segment = 0; segment < 7; segment++)
     {
-    isBitSet = bitRead(numLeds[numero], segment);
-    digitalWrite( segmentPins[segment], isBitSet); 
-   // delay(600);
+      isBitSet = bitRead(numLeds[numero], segment);
+      digitalWrite( segmentPins[segment], isBitSet); 
     }
   delay(1000);
   shutDown();
-  //delay(1000);
   }
 
 }
