@@ -12,8 +12,14 @@
 
 //******  Variables  *****************************************************************
 
+// Cal utilitzar aquests dos parametres si es catode comu
 const char ledOn = HIGH;
+const char ledOff = LOW;
+// Cal utilitzar aquests dos paramtre si es anode comu
+//const char ledOn = LOW;
+//const char ledOff = HIGH;
 
+// Assignacio de segments a ports de sortida
 int seg_a = 1;
 int seg_b = 2;
 int seg_c = 3;
@@ -55,36 +61,38 @@ void setup() {
 void loop() {
   
   boolean isBitSet;          // Assigna 1 o 0 a cada segment del seven segment
-/*  
-  digitalWrite(seg_a, HIGH);
-  delay(1000);
-  digitalWrite(seg_a, LOW);
-  digitalWrite(seg_b, HIGH);
-  delay(1000);
-  digitalWrite(seg_b, LOW);
-  digitalWrite(seg_c, HIGH);
-  delay(1000);
-  digitalWrite(seg_c, LOW);
-  digitalWrite(seg_d, HIGH);
-  delay(1000);
-  digitalWrite(seg_d, LOW);
-  digitalWrite(seg_e, HIGH);
-  delay(1000);
-  digitalWrite(seg_e, LOW);
-  digitalWrite(seg_f, HIGH);
-  delay(1000);
-  digitalWrite(seg_f, LOW);
-  digitalWrite(seg_g, HIGH);
-  delay(1000);
-  digitalWrite(seg_g, LOW);
-  delay(1000);
-*/ 
+
+// Testeja els segments de forma individual  
+  digitalWrite(seg_a, ledOn);
+  delay(200);
+  digitalWrite(seg_a, ledOff);
+  digitalWrite(seg_b, ledOn);
+  delay(200);
+  digitalWrite(seg_b, ledOff);
+  digitalWrite(seg_c, ledOn);
+  delay(200);
+  digitalWrite(seg_c, ledOff);
+  digitalWrite(seg_d, ledOn);
+  delay(200);
+  digitalWrite(seg_d, ledOff);
+  digitalWrite(seg_e, ledOn);
+  delay(200);
+  digitalWrite(seg_e, ledOff);
+  digitalWrite(seg_f, ledOn);
+  delay(200);
+  digitalWrite(seg_f, ledOff);
+  digitalWrite(seg_g, ledOn);
+  delay(200);
+  digitalWrite(seg_g, ledOff);
+  delay(200);
+
   // representa el 0
   for(int numero = 0; numero < 10; numero++)
   {
     for(int segment = 0; segment < 7; segment++)
     {
       isBitSet = bitRead(numLeds[numero], segment);
+      if (ledOn == LOW) isBitSet = ! isBitSet; // Cas anode comu, inverteix sortida
       digitalWrite( segmentPins[segment], isBitSet); 
     }
   delay(1000);
@@ -95,12 +103,12 @@ void loop() {
   //Aquesta funcio apaga tots elssegments
   void shutDown()
   {
-    digitalWrite(seg_a, LOW);
-    digitalWrite(seg_b, LOW);
-    digitalWrite(seg_c, LOW);
-    digitalWrite(seg_d, LOW);
-    digitalWrite(seg_e, LOW);
-    digitalWrite(seg_f, LOW);
-    digitalWrite(seg_g, LOW);
+    digitalWrite(seg_a, ledOff);
+    digitalWrite(seg_b, ledOff);
+    digitalWrite(seg_c, ledOff);
+    digitalWrite(seg_d, ledOff);
+    digitalWrite(seg_e, ledOff);
+    digitalWrite(seg_f, ledOff);
+    digitalWrite(seg_g, ledOff);
   }
 
