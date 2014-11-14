@@ -45,14 +45,19 @@ const byte numLeds[10] = {
 };
 
 //******  Includes  ******************************************************************
-void setup() {                
-  pinMode(seg_a, OUTPUT);
+void setup() {
+  // Configura els pins com a sortides
+  for(int i = 0; i < 7; i++)
+    {
+      pinMode( segmentPins[i], OUTPUT); 
+    }  
+/*  pinMode(seg_a, OUTPUT);
   pinMode(seg_b, OUTPUT);  
   pinMode(seg_c, OUTPUT);
   pinMode(seg_d, OUTPUT);
   pinMode(seg_e, OUTPUT);
   pinMode(seg_f, OUTPUT);
-  pinMode(seg_g, OUTPUT);
+  pinMode(seg_g, OUTPUT);*/
 }
 
 
