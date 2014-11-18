@@ -20,13 +20,16 @@ const char ledOff = LOW;
 //const char ledOff = HIGH;
 
 // Assignacio de segments a ports de sortida
-int seg_a = 2;
-int seg_b = 3;
-int seg_c = 4;
-int seg_d = 7;
-int seg_e = 8;
-int seg_f = 12;
-int seg_g = 13;
+const int seg_a = 2;
+const int seg_b = 3;
+const int seg_c = 4;
+const int seg_d = 7;
+const int seg_e = 8;
+const int seg_f = 12;
+const int seg_g = 13;
+
+// Assigno el polsador al port entrada D5
+const int buttonPin = 5;
 
 const char segmentPins[7] = { seg_a,seg_b,seg_c,seg_d,seg_e,seg_f,seg_g};
 
@@ -46,6 +49,8 @@ const byte numLeds[10] = {
 
 //******  Includes  ******************************************************************
 void setup() {
+  // Configura el pin del polsador com entrada
+  pinMode(buttonPin, INPUT);
   // Configura els pins com a sortides
   for(int i = 0; i < 7; i++)
     {
@@ -60,8 +65,11 @@ void setup() {
 void loop() {
   
   boolean isBitSet;          // Assigna 1 o 0 a cada segment del seven segment
+  boolean buttonState;
 
-
+  buttonState = digitalRead(buttonPin);
+  
+  if (buttonState == LOW) {
   // representa els numeros del 0 al 9
   for(int numero = 0; numero < 10; numero++)
   {
@@ -73,6 +81,7 @@ void loop() {
     }
   delay(1000);
   shutDown();
+  }
   }
 
 }
