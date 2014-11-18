@@ -51,13 +51,7 @@ void setup() {
     {
       pinMode( segmentPins[i], OUTPUT); 
     }  
-/*  pinMode(seg_a, OUTPUT);
-  pinMode(seg_b, OUTPUT);  
-  pinMode(seg_c, OUTPUT);
-  pinMode(seg_d, OUTPUT);
-  pinMode(seg_e, OUTPUT);
-  pinMode(seg_f, OUTPUT);
-  pinMode(seg_g, OUTPUT);*/
+
 }
 
 
@@ -67,31 +61,8 @@ void loop() {
   
   boolean isBitSet;          // Assigna 1 o 0 a cada segment del seven segment
 
-// Testeja els segments de forma individual  
-  digitalWrite(seg_a, ledOn);
-  delay(200);
-  digitalWrite(seg_a, ledOff);
-  digitalWrite(seg_b, ledOn);
-  delay(200);
-  digitalWrite(seg_b, ledOff);
-  digitalWrite(seg_c, ledOn);
-  delay(200);
-  digitalWrite(seg_c, ledOff);
-  digitalWrite(seg_d, ledOn);
-  delay(200);
-  digitalWrite(seg_d, ledOff);
-  digitalWrite(seg_e, ledOn);
-  delay(200);
-  digitalWrite(seg_e, ledOff);
-  digitalWrite(seg_f, ledOn);
-  delay(200);
-  digitalWrite(seg_f, ledOff);
-  digitalWrite(seg_g, ledOn);
-  delay(200);
-  digitalWrite(seg_g, ledOff);
-  delay(200);
 
-  // representa el 0
+  // representa els numeros del 0 al 9
   for(int numero = 0; numero < 10; numero++)
   {
     for(int segment = 0; segment < 7; segment++)
@@ -108,12 +79,10 @@ void loop() {
   //Aquesta funcio apaga tots elssegments
   void shutDown()
   {
-    digitalWrite(seg_a, ledOff);
-    digitalWrite(seg_b, ledOff);
-    digitalWrite(seg_c, ledOff);
-    digitalWrite(seg_d, ledOff);
-    digitalWrite(seg_e, ledOff);
-    digitalWrite(seg_f, ledOff);
-    digitalWrite(seg_g, ledOff);
+    for(int i = 0; i < 7; i++)
+    {
+      digitalWrite( segmentPins[i], ledOff); 
+    }
+
   }
 
