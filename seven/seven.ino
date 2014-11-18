@@ -20,13 +20,13 @@ const char ledOff = LOW;
 //const char ledOff = HIGH;
 
 // Assignacio de segments a ports de sortida
-int seg_a = 1;
-int seg_b = 2;
-int seg_c = 3;
-int seg_d = 5;
-int seg_e = 6;
-int seg_f = 7;
-int seg_g = 8;
+int seg_a = 2;
+int seg_b = 3;
+int seg_c = 4;
+int seg_d = 7;
+int seg_e = 8;
+int seg_f = 12;
+int seg_g = 13;
 
 const char segmentPins[7] = { seg_a,seg_b,seg_c,seg_d,seg_e,seg_f,seg_g};
 
