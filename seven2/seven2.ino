@@ -65,25 +65,43 @@ void setup() {
 void loop() {
   
   boolean isBitSet;          // Assigna 1 o 0 a cada segment del seven segment
-  boolean buttonState;
+  boolean onOff = false;     // Conte l'estat actual pot estar funcionant o parat
+  boolean lastState;         // Darrer estat del pulsador, true vol dir darrer estat pitjat
 
-  buttonState = digitalRead(buttonPin);
   
-  if (buttonState == LOW) {
-  // representa els numeros del 0 al 9
-  for(int numero = 0; numero < 10; numero++)
-  {
-    for(int segment = 0; segment < 7; segment++)
+  if (digitalRead(buttonPin) == LOW) {
+    onOff = true;
+    lastState = true;
+  }
+  while (onOff == true) {
+    // representa els numeros del 0 al 9
+    for(int numero = 0; numero < 10; numero++)
     {
-      isBitSet = bitRead(numLeds[numero], segment);
-      if (ledOn == LOW) isBitSet = ! isBitSet; // Cas anode comu, inverteix sortida
-      digitalWrite( segmentPins[segment], isBitSet); 
+      while (onOff == false) {
+        if (digitalRead(buttonPin) == HIGH) lastState = false;
+        if ((digitalRead(buttonPin) == LOW) and (lastState == false)) {
+          onOff = true;
+          lastState = true;
+        }  
+      }
+      for(int segment = 0; segment < 7; segment++)
+      {
+        isBitSet = bitRead(numLeds[numero], segment);
+        if (ledOn == LOW) isBitSet = ! isBitSet; // Cas anode comu, inverteix sortida
+        digitalWrite( segmentPins[segment], isBitSet); 
+      }
+  
+    delay(500);
+    if ((digitalRead(buttonPin) == HIGH) and ( lastState == true )) lastState = false;
+    if ((digitalRead(buttonPin) == LOW) and (lastState == false)) {
+      onOff = false;
+      lastState = true;
     }
-  delay(1000);
-  shutDown();
+    
+    shutDown();
+  
+    }
   }
-  }
-
 }
   //Aquesta funcio apaga tots elssegments
   void shutDown()
